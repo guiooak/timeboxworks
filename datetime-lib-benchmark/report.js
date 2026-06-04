@@ -146,7 +146,7 @@ function renderScorecard() {
 
 /* ---------------- verdict ---------------- */
 function renderVerdict() {
-  const host = $('#verdict'); host.innerHTML = '';
+  const host = $('#verdictGrid'); host.innerHTML = '';
   VERDICT.forEach((v) => {
     const info = libInfo(v.lib);
     const card = el('div', 'v-card');
@@ -179,10 +179,9 @@ function setupTabs() {
     // re-trigger bar animation for the now-visible panel
     panel.querySelectorAll('.bar-fill').forEach((f) => { f.style.width = '0'; });
     animate(panel);
-    // Scroll so the (sticky) nav pins to the top of the viewport, with the panel below it.
-    const tabs = $('.tabs');
-    const target = window.scrollY + tabs.getBoundingClientRect().top;
-    window.scrollTo({ top: target, behavior: 'smooth' });
+    // Scroll to the nav's flow position so it pins to the top with the panel below it.
+    // Use offsetTop (not getBoundingClientRect) so it works even when already pinned.
+    window.scrollTo({ top: $('.tabs').offsetTop, behavior: 'smooth' });
   }));
 }
 

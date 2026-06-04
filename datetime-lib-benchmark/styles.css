@@ -74,7 +74,10 @@ h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; margin: 0 0 18px; fon
 .tabs button.active { color: #fff; background: linear-gradient(120deg, var(--accent), #7c3aed); }
 
 /* panels */
-main { position: relative; z-index: 1; padding: 56px 0 80px; }
+main { position: relative; z-index: 1; }
+/* main also has class .wrap (padding: 0 22px), which out-specifies a plain `main`
+   rule — so the top gutter must be set with this more-specific selector. */
+main.wrap { padding-top: 40px; padding-bottom: 80px; }
 .panel { display: none; animation: fade .4s ease; }
 .panel.active { display: block; }
 @keyframes fade { from{ opacity:0; transform: translateY(10px) } to{ opacity:1; transform:none } }
@@ -127,7 +130,7 @@ td.lib-cell { font-weight: 600; }
 .pip.s1 { background: rgba(248,113,113,.14); color: #f87171; }
 
 /* verdict */
-.verdict-grid { display: grid; gap: 16px; }
+.verdict-grid { display: grid; gap: 32px; }
 .v-card { background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 22px 22px 22px 26px; position: relative; box-shadow: var(--shadow); }
 .v-card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background: var(--bar); border-radius: 5px 0 0 5px; }

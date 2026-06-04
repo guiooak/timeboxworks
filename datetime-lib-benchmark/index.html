@@ -75,7 +75,7 @@
     <section id="verdict" class="panel">
       <h2>🏆 Verdict</h2>
       <p class="lead">Your app's core entity is the <b>interval / duration</b> — and that's where the headline-speed story flips.</p>
-      <div id="verdict" class="verdict-grid"></div>
+      <div id="verdictGrid" class="verdict-grid"></div>
       <div class="recommendation">
         <h3>Concrete suggestion</h3>
         <p>Store timestamps as <b>epoch millis</b> (or UTC ISO), use <b>date-fns</b> for parsing / formatting / comparison, and pull in <b>date-fns-tz</b> only where you cross timezones. Near-native size and speed, correct and readable interval logic.</p>
