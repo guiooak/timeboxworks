@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datetime Library Benchmark — Luxon vs date-fns vs Day.js</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Time-tracking app · datetime library evaluation</p>
+      <h1>Choosing a <span class="grad">datetime library</span></h1>
+      <p class="subtitle">A hands-on benchmark of <b>Luxon</b>, <b>date-fns</b>, <b>Day.js</b> — plus native&nbsp;<code>Date</code> and Moment for reference — across bundle size, raw speed, interval logic, and DST correctness.</p>
+      <div class="meta-chips" id="metaChips"></div>
+      <div class="podium" id="podium"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <div class="wrap tabs-inner">
+      <button data-tab="bundle" class="active">Bundle size</button>
+      <button data-tab="core">Runtime speed</button>
+      <button data-tab="interval">Interval stress</button>
+      <button data-tab="dst">DST correctness</button>
+      <button data-tab="scorecard">Scorecard</button>
+      <button data-tab="verdict">Verdict</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section id="bundle" class="panel active">
+      <h2>📦 Bundle size</h2>
+      <p class="lead">Tree-shaken &amp; minified, bundling a realistic time-tracker entrypoint (parse + diff + duration format + timestamp format). Lower is better.</p>
+      <div class="toolbar"><span>Metric:</span>
+        <button class="seg active" data-metric="gzip">min + gzip</button>
+        <button class="seg" data-metric="min">minified</button>
+      </div>
+      <div id="bundleChart" class="chart"></div>
+      <p class="caption">⚠️ Moment shown bare-core; with locales (default) it commonly balloons to 60–70&nbsp;KB gzip. Day.js / date-fns / Luxon all use the browser's built-in <code>Intl</code> for timezones, shipping no extra TZ data.</p>
+    </section>
+
+    <section id="core" class="panel">
+      <h2>⚡ Runtime speed</h2>
+      <p class="lead">Operations per second on a warm JIT (tinybench). Higher is better. Native wins everywhere — but note the <em>absolute</em> numbers: even the slowest library is sub-millisecond.</p>
+      <div class="toolbar"><span>Bar scale:</span>
+        <button class="seg active" data-scale="linear">linear</button>
+        <button class="seg" data-scale="log">log</button>
+      </div>
+      <div id="coreCharts"></div>
+    </section>
+
+    <section id="interval" class="panel">
+      <h2>🔗 Interval stress test</h2>
+      <p class="lead">The operations a time tracker actually leans on: detecting overlapping sessions, splitting a session at calendar midnight for per-day totals, and summing many sessions. This is where the rankings reshuffle.</p>
+      <div id="intervalCharts"></div>
+    </section>
+
+    <section id="dst" class="panel">
+      <h2>🕑 DST correctness</h2>
+      <p class="lead">Physical elapsed time when a session straddles a daylight-saving transition, given wall-clock local times in <code>America/New_York</code>. Correctness, not speed — and the one place "no library" genuinely breaks.</p>
+      <div id="dstTable"></div>
+      <p class="caption">Every real library is correct (all delegate to <code>Intl</code>/IANA). Native naive returns the wall-clock delta — the classic billing bug. Even a careful ~18-line hand-rolled <code>Intl</code> version is still wrong at the boundary (single-pass offset resolution), which is the strongest argument against rolling your own.</p>
+    </section>
+
+    <section id="scorecard" class="panel">
+      <h2>🧮 Scorecard</h2>
+      <p class="lead">The three finalists across every dimension that matters for this app. Hover a cell for the detail.</p>
+      <div id="scorecard"></div>
+    </section>
+
+    <section id="verdict" class="panel">
+      <h2>🏆 Verdict</h2>
+      <p class="lead">Your app's core entity is the <b>interval / duration</b> — and that's where the headline-speed story flips.</p>
+      <div id="verdict" class="verdict-grid"></div>
+      <div class="recommendation">
+        <h3>Concrete suggestion</h3>
+        <p>Store timestamps as <b>epoch millis</b> (or UTC ISO), use <b>date-fns</b> for parsing / formatting / comparison, and pull in <b>date-fns-tz</b> only where you cross timezones. Near-native size and speed, correct and readable interval logic.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>Reproduce it yourself: <code>cd scripts &amp;&amp; npm i luxon dayjs date-fns date-fns-tz moment moment-timezone tinybench esbuild &amp;&amp; node bench.mjs</code></p>
+      <p class="muted">Static report · all data measured locally · no network required.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>

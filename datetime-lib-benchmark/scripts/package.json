@@ -1,0 +1,23 @@
+{
+  "name": "datetime-lib-benchmark-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Reproducible benchmarks comparing Luxon, date-fns, Day.js (+ native Date & Moment) for a time-tracking app.",
+  "scripts": {
+    "bench": "node bench.mjs",
+    "bundle": "node bundle.mjs",
+    "interval": "node interval.mjs",
+    "dst": "node dst.mjs",
+    "all": "node bench.mjs && node bundle.mjs && node interval.mjs && node dst.mjs"
+  },
+  "dependencies": {
+    "date-fns": "4.4.0",
+    "date-fns-tz": "3.2.0",
+    "dayjs": "1.11.21",
+    "esbuild": "0.28.0",
+    "luxon": "3.7.2",
+    "moment": "2.30.1",
+    "moment-timezone": "0.6.2",
+    "tinybench": "6.0.2"
+  }
+}
