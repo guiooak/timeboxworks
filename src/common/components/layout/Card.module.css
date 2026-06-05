@@ -1,0 +1,44 @@
+.card {
+  border-radius: var(--tw-radius);
+  padding: var(--tw-space-4);
+  border: var(--tw-border);
+}
+.primary {
+  background: var(--tw-primary);
+  color: #fff;
+  border-color: transparent;
+}
+.secondary {
+  background: var(--tw-secondary);
+  color: #fff;
+  border-color: transparent;
+}
+.success {
+  background: var(--tw-success);
+  color: #fff;
+  border-color: transparent;
+}
+.info {
+  background: var(--tw-info);
+  color: #fff;
+  border-color: transparent;
+}
+.warning {
+  background: var(--tw-warning);
+  color: #1f2326;
+  border-color: transparent;
+}
+.danger {
+  background: var(--tw-danger);
+  color: #fff;
+  border-color: transparent;
+}
+.light {
+  background: var(--tw-surface);
+  color: var(--tw-text);
+}
+.dark {
+  background: var(--tw-dark);
+  color: #fff;
+  border-color: transparent;
+}

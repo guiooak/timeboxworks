@@ -1,0 +1,14 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--tw-font-size-lg);
+  font-weight: var(--tw-font-weight-medium);
+  color: var(--tw-text);
+}
+.logo strong {
+  color: var(--tw-primary);
+}
+.icon {
+  font-size: 22px;
+}

@@ -1,0 +1,19 @@
+.time {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--tw-font-weight-bold);
+}
+.xs {
+  font-size: var(--tw-font-size-md);
+}
+.sm {
+  font-size: var(--tw-font-size-lg);
+}
+.md {
+  font-size: var(--tw-font-size-xl);
+}
+.lg {
+  font-size: 3rem;
+}
+.xl {
+  font-size: 4.5rem;
+}

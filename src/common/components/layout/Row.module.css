@@ -1,0 +1,9 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tw-gutter);
+  margin-bottom: var(--tw-gutter);
+}
+.row:last-child {
+  margin-bottom: 0;
+}

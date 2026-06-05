@@ -1,0 +1,28 @@
+.animation {
+  animation-duration: 220ms;
+  animation-fill-mode: both;
+}
+.fade {
+  animation-name: fade;
+}
+.slide {
+  animation-name: slide;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

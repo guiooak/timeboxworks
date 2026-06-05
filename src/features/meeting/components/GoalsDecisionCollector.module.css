@@ -1,0 +1,27 @@
+.collector {
+  display: block;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--tw-space-3);
+}
+.automatic {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-2);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-2);
+}
+.fullName {
+  font-size: var(--tw-font-size-sm);
+  color: var(--tw-text-muted);
+  margin-bottom: var(--tw-space-2);
+}
+.weight {
+  color: var(--tw-text-muted);
+}

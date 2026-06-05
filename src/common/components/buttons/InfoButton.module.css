@@ -1,0 +1,15 @@
+.info {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--tw-radius-pill);
+  border: 1px solid var(--tw-border-color);
+  background: var(--tw-surface);
+  color: var(--tw-primary);
+  cursor: pointer;
+  font-style: italic;
+  font-weight: var(--tw-font-weight-bold);
+  line-height: 1;
+}
+.info:hover {
+  background: var(--tw-gray-ice);
+}

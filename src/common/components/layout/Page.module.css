@@ -1,0 +1,7 @@
+.page {
+  background: var(--tw-surface);
+  border-radius: var(--tw-radius-lg);
+  box-shadow: var(--tw-shadow);
+  padding: var(--tw-space-6);
+  margin: var(--tw-space-5) 0;
+}

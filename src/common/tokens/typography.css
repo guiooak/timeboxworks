@@ -1,0 +1,21 @@
+:root {
+  --tw-font-sans:
+    'Inter', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  --tw-font-mono:
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --tw-font-size-xs: 0.75rem;
+  --tw-font-size-sm: 0.875rem;
+  --tw-font-size-md: 1rem;
+  --tw-font-size-lg: 1.25rem;
+  --tw-font-size-xl: 1.75rem;
+  --tw-font-size-xxl: 2.5rem;
+
+  --tw-font-weight-light: 300;
+  --tw-font-weight-normal: 400;
+  --tw-font-weight-medium: 500;
+  --tw-font-weight-bold: 700;
+
+  --tw-line-height: 1.5;
+}

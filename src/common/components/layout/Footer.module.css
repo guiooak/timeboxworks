@@ -1,0 +1,6 @@
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-2);
+  margin-top: var(--tw-space-5);
+}

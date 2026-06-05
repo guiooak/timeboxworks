@@ -1,0 +1,35 @@
+.collapse {
+  border: var(--tw-border);
+  border-radius: var(--tw-radius);
+  background: var(--tw-surface);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--tw-space-2) var(--tw-space-3);
+  gap: var(--tw-space-2);
+}
+.titleButton {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  flex: 1;
+  font-size: var(--tw-font-size-md);
+  color: var(--tw-text);
+}
+.caret {
+  color: var(--tw-text-muted);
+}
+.title {
+  font-weight: var(--tw-font-weight-medium);
+}
+.body {
+  padding: 0 var(--tw-space-3) var(--tw-space-3);
+  border-top: var(--tw-border);
+  padding-top: var(--tw-space-3);
+}

@@ -1,0 +1,87 @@
+.report {
+  padding-top: var(--tw-space-5);
+}
+.loading {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section {
+  margin-top: var(--tw-space-6);
+}
+.goals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-2);
+}
+.goal {
+  padding: var(--tw-space-3);
+}
+.goalHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--tw-space-2);
+  flex-wrap: wrap;
+}
+.goalMeta {
+  font-size: var(--tw-font-size-sm);
+  color: var(--tw-text-muted);
+}
+.decisions {
+  margin-top: var(--tw-space-2);
+  white-space: pre-wrap;
+  color: var(--tw-text);
+}
+.topics {
+  margin: 0;
+  padding-left: var(--tw-space-5);
+  color: var(--tw-text);
+}
+.actions {
+  display: flex;
+  gap: var(--tw-space-2);
+}
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--tw-gutter);
+}
+.timeCard {
+  text-align: center;
+}
+.timeCardLabel {
+  font-weight: var(--tw-font-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--tw-font-size-sm);
+  letter-spacing: 0.04em;
+}
+.timeCardTimes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: var(--tw-space-2) 0;
+}
+.timeCardFeedback {
+  font-size: var(--tw-font-size-sm);
+}
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-3);
+}
+.previewChart {
+  width: 100%;
+  border: var(--tw-border);
+  border-radius: var(--tw-radius-sm);
+}
+.previewText {
+  white-space: pre-wrap;
+  background: var(--tw-gray-ice);
+  border-radius: var(--tw-radius-sm);
+  padding: var(--tw-space-3);
+  font-family: var(--tw-font-mono);
+  font-size: var(--tw-font-size-sm);
+  overflow-x: auto;
+}

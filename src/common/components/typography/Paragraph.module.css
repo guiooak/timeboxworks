@@ -1,0 +1,4 @@
+.paragraph {
+  margin: var(--tw-space-2) 0;
+  color: var(--tw-text);
+}

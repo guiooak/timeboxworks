@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  max-width: var(--tw-container-max);
+  margin: 0 auto;
+  padding: 0 var(--tw-gutter);
+}
+.fullWidth {
+  max-width: none;
+}

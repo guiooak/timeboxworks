@@ -1,0 +1,5 @@
+.article {
+  white-space: pre-wrap;
+  color: var(--tw-text);
+  line-height: var(--tw-line-height);
+}

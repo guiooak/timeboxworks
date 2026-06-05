@@ -1,0 +1,31 @@
+.history {
+  padding-top: var(--tw-space-5);
+}
+.head {
+  margin-bottom: var(--tw-space-4);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-3);
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tw-space-3);
+  flex-wrap: wrap;
+}
+.meta {
+  color: var(--tw-text-muted);
+  font-size: var(--tw-font-size-sm);
+}
+.actions {
+  display: flex;
+  gap: var(--tw-space-2);
+}
+.blankSlate {
+  text-align: center;
+  color: var(--tw-text-muted);
+  padding: var(--tw-space-7) 0;
+}

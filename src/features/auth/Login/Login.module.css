@@ -1,0 +1,30 @@
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tw-space-4);
+}
+.card {
+  background: var(--tw-surface);
+  border-radius: var(--tw-radius-lg);
+  box-shadow: var(--tw-shadow-lg);
+  padding: var(--tw-space-7) var(--tw-space-6);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tw-space-3);
+}
+.logo {
+  font-size: 48px;
+}
+.tagline {
+  color: var(--tw-text-muted);
+}
+.error {
+  color: var(--tw-danger);
+  font-size: var(--tw-font-size-sm);
+}

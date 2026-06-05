@@ -1,0 +1,24 @@
+.heading {
+  font-weight: var(--tw-font-weight-bold);
+  line-height: 1.2;
+}
+.xxs {
+  font-size: var(--tw-font-size-sm);
+  font-weight: var(--tw-font-weight-medium);
+  color: var(--tw-text-muted);
+}
+.xs {
+  font-size: var(--tw-font-size-md);
+}
+.sm {
+  font-size: var(--tw-font-size-lg);
+}
+.md {
+  font-size: var(--tw-font-size-xl);
+}
+.lg {
+  font-size: var(--tw-font-size-xl);
+}
+.xl {
+  font-size: var(--tw-font-size-xxl);
+}

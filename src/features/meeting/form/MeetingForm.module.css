@@ -1,0 +1,13 @@
+.times {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--tw-gutter);
+}
+.actions {
+  display: flex;
+  gap: var(--tw-space-2);
+}
+.error {
+  color: var(--tw-danger);
+  font-size: var(--tw-font-size-xs);
+}

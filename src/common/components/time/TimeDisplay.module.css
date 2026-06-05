@@ -1,0 +1,16 @@
+.display {
+  text-align: center;
+}
+.header {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--tw-font-size-sm);
+  opacity: 0.85;
+}
+.value {
+  padding: var(--tw-space-4) 0;
+}
+.footer {
+  font-size: var(--tw-font-size-sm);
+  opacity: 0.85;
+}

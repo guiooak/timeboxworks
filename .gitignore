@@ -1,0 +1,20 @@
+node_modules
+dist
+coverage
+*.tsbuildinfo
+
+# local env
+.env
+.env.local
+*.local
+
+# logs / editor
+*.log
+.DS_Store
+.idea
+.vscode
+
+# Yarn (Berry) — keep releases, ignore the rest
+.yarn/*
+!.yarn/releases
+.pnp.*

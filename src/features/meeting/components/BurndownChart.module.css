@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+}
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tooltip {
+  background: var(--tw-surface);
+  border: var(--tw-border);
+  border-radius: var(--tw-radius-sm);
+  box-shadow: var(--tw-shadow);
+  padding: var(--tw-space-2);
+  font-size: var(--tw-font-size-sm);
+}
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-2);
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}

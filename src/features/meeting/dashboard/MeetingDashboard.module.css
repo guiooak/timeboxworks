@@ -1,0 +1,34 @@
+.dashboard {
+  padding-top: var(--tw-space-5);
+}
+.loading {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.head {
+  margin-bottom: var(--tw-space-4);
+}
+.block {
+  margin-bottom: var(--tw-gutter);
+}
+.parkingLot {
+  margin-top: var(--tw-gutter);
+}
+.parkingHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--tw-space-3);
+}
+.blankSlate {
+  text-align: center;
+  color: var(--tw-text-muted);
+  padding: var(--tw-space-5) 0;
+}
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-2);
+}

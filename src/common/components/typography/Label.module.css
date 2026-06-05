@@ -1,0 +1,9 @@
+.label {
+  display: inline-block;
+  font-size: var(--tw-font-size-sm);
+  color: var(--tw-text-muted);
+}
+.bold {
+  font-weight: var(--tw-font-weight-bold);
+  color: var(--tw-text);
+}

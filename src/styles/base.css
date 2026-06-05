@@ -1,0 +1,50 @@
+@import '../common/tokens/index.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--tw-font-sans);
+  font-size: var(--tw-font-size-md);
+  line-height: var(--tw-line-height);
+  color: var(--tw-text);
+  background: var(--tw-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--tw-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+}
+
+:root {
+  color-scheme: light;
+}

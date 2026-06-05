@@ -1,0 +1,38 @@
+:root {
+  /* Brand + status palette (ported & lightly modernized from legacy) */
+  --tw-blue: #0d6efd;
+  --tw-indigo: #6610f2;
+  --tw-purple: #6f42c1;
+  --tw-pink: #d63384;
+  --tw-red: #dc3545;
+  --tw-orange: #fd7e14;
+  --tw-yellow: #ffc107;
+  --tw-green: #28a745;
+  --tw-teal: #20c997;
+  --tw-cyan: #17a2b8;
+
+  --tw-white: #fff;
+  --tw-white-ice: #fcfcfc;
+
+  --tw-gray-dark: #343a40;
+  --tw-gray: #6c757d;
+  --tw-gray-light: #dee2e6;
+  --tw-gray-ice: #f1f3f5;
+
+  /* Semantic themes */
+  --tw-primary: #0d6efd;
+  --tw-secondary: #6c757d;
+  --tw-success: #28a745;
+  --tw-info: #17a2b8;
+  --tw-warning: #ffc107;
+  --tw-danger: #dc3545;
+  --tw-light: #f8f9fa;
+  --tw-dark: #343a40;
+
+  /* Surfaces + text */
+  --tw-text: #2b2f33;
+  --tw-text-muted: #6c757d;
+  --tw-bg: #f6f8fa;
+  --tw-surface: #ffffff;
+  --tw-border-color: var(--tw-gray-light);
+}

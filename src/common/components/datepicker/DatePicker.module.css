@@ -1,0 +1,95 @@
+.wrapper {
+  position: relative;
+}
+.trigger {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: var(--tw-border);
+  border-radius: var(--tw-radius-sm);
+  background: var(--tw-surface);
+  cursor: pointer;
+  font-size: var(--tw-font-size-md);
+  color: var(--tw-text);
+}
+.trigger:focus {
+  outline: 2px solid var(--tw-primary);
+  outline-offset: 1px;
+}
+.invalid {
+  border-color: var(--tw-danger);
+}
+.popover {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--tw-surface);
+  border: var(--tw-border);
+  border-radius: var(--tw-radius);
+  box-shadow: var(--tw-shadow-lg);
+  padding: var(--tw-space-3);
+  width: 280px;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--tw-space-2);
+}
+.monthTitle {
+  font-weight: var(--tw-font-weight-medium);
+}
+.nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 8px;
+  color: var(--tw-text);
+}
+.weekdays,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.weekdays {
+  font-size: var(--tw-font-size-xs);
+  color: var(--tw-text-muted);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.day {
+  border: none;
+  background: none;
+  padding: 6px 0;
+  border-radius: var(--tw-radius-sm);
+  cursor: pointer;
+  font-size: var(--tw-font-size-sm);
+  color: var(--tw-text);
+}
+.day:hover {
+  background: var(--tw-gray-ice);
+}
+.muted {
+  color: var(--tw-gray-light);
+}
+.selected {
+  background: var(--tw-primary);
+  color: #fff;
+}
+.selected:hover {
+  background: var(--tw-primary);
+}
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-2);
+  margin-top: var(--tw-space-3);
+}
+.timeRow input {
+  padding: 4px 8px;
+  border: var(--tw-border);
+  border-radius: var(--tw-radius-sm);
+}
