@@ -75,7 +75,7 @@ Abstractions to build: **datetime → date-fns**, **auth + database → Firebase
 - **`common/services/datetime`** wraps **date-fns** (tree-shakeable pure functions over native `Date`; `intervalToDuration`/`formatDuration` power the countdown, plus `isSameDay`, `formatISO`/`parseISO`). Exposes the legacy `timeService` surface (format, ISO, now, diff, duration, isSameDay) as our own API.
 - **`common/services/auth`** + **`common/services/database`** wrap **Firebase** Auth (Google sign-in) and Realtime Database (generic, typed read/write/subscribe). The meeting repository is built on top of `database`.
 - **`common/services/chart`** wraps **Recharts** into agnostic chart primitives; the generic `Chart` component (`common/components/chart`) consumes it. The domain-aware `BurndownChart` (knows about goals/projection) lives in the meeting feature and is composed from these primitives.
-- **Styling**: keep the CSS-custom-property design tokens (`_colors`, `_parameters`) ported to a global `tokens.css`; modernize the visual style (spacing, radius, subtle shadows, refreshed palette) while preserving the Timebox Works logo/branding assets. Component-scoped styles via **CSS Modules**.
+- **Styling**: **plain CSS only — no preprocessor (no SCSS/Sass/Less).** Component styles use **CSS Modules** (`ComponentName.module.css`, plain CSS syntax, scoped by Vite at build, imported as `styles.foo`). Design-system tokens are concentrated in **`src/common/tokens/`** as CSS custom properties (ported from legacy `_colors`/`_parameters` — colors, spacing, radius, typography), imported globally once; `src/styles/base.css` holds resets/globals. Modernize the visual style (spacing, radius, subtle shadows, refreshed palette) while preserving the Timebox Works logo/branding assets.
 
 ### Firebase (Auth + Realtime Database)
 - Firebase Web SDK v10+ initialized inside `common/services/database` using `VITE_FIREBASE_*` env vars (`.env.local`, plus `.env.example` committed). User must create a Firebase project, enable **Google** as a sign-in provider, and enable **Realtime Database**.
@@ -113,10 +113,12 @@ Two layers: **`common/`** (app-agnostic — internal component library + library
    ├─ app/                      ← app shell; depends only on common/ + features/
    │  ├─ App.tsx               (AppHeader/AppFooter, router outlet)
    │  └─ routes.tsx            (route table fed to common/services/router)
-   ├─ styles/{tokens.css, base.css}
+   ├─ styles/base.css           (resets / global styles — plain CSS)
    ├─ assets/                   (logos/icons copied from legacy)
    │
    ├─ common/
+   │  ├─ tokens/                ← design-system tokens as CSS custom properties
+   │  │                          (colors.css, spacing.css, typography.css, radius.css → index.css)
    │  ├─ components/            ← internal, agnostic component library (from scratch)
    │  │  ├─ index.ts
    │  │  ├─ layout/      Container, Row, Col, Page, Box, Card, Divider, Header, Footer
@@ -151,7 +153,7 @@ Two layers: **`common/`** (app-agnostic — internal component library + library
          ├─ report/     MeetingReport (+ Goals, SideTopics, TimeCardsGrid, Footer, TemplatePreviewModal*)
          └─ history/    MeetingsHistory list (reopen + clone actions)
 ```
-Each component: `ComponentName.tsx`, `ComponentName.module.css`, `index.ts`. (Test files — `*.test.tsx` for the components the legacy tested, plus service tests — are authored in **plan 2**, not here.)
+Each component: `ComponentName.tsx`, `ComponentName.module.css` (CSS Modules — plain CSS, no preprocessor), `index.ts`. (Test files — `*.test.tsx` for the components the legacy tested, plus service tests — are authored in **plan 2**, not here.)
 
 ## Architecture Enforcement (ESLint)
 
@@ -164,7 +166,7 @@ ESLint 9 flat config (`eslint.config.js`) makes the abstraction boundary a build
 
 ## common/components — rebuild notes (from legacy → React)
 
-- **Layout / typography**: straightforward presentational components; port the flex/gutter/responsive SCSS tokens (`_flex`, `_gutters`, `_responsiveTokens`) into CSS Modules. `Heading` keeps `size` (xxs–xl) + `title` slot; `Card`/`Button` keep the `theme` enum (`primary|secondary|success|info|warning|danger|light|dark`) and `Button` keeps `size/outline/block/disabled`.
+- **Layout / typography**: straightforward presentational components; port the legacy flex/gutter/responsive tokens (`_flex`, `_gutters`, `_responsiveTokens`) into `common/tokens` CSS custom properties + per-component CSS Modules (no SCSS). `Heading` keeps `size` (xxs–xl) + `title` slot; `Card`/`Button` keep the `theme` enum (`primary|secondary|success|info|warning|danger|light|dark`) and `Button` keeps `size/outline/block/disabled`.
 - **Form system** (the intricate part): replace Vue `provide/inject (formVm)` with a **`FormContext`** — `<Form>` provides `registerField/unregisterField/values/validity`, fields register via a `useFormField` hook. Preserve:
   - per-field validation (`required`, min/max length, `customValidation` returning `true | errorString`), dirty/submitted tracking, submit only when valid.
   - `buildOutput()` grouping: fields with an `inputsGroupKey` (e.g. goals) collect into an array, optionally sub-grouped by `inputsSubGroupKey`.
