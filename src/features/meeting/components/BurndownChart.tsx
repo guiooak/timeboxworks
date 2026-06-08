@@ -94,6 +94,7 @@ export const BurndownChart = forwardRef<HTMLDivElement, BurndownChartProps>(
           series={series}
           height={height}
           xDomain={xDomain}
+          showLegend
           xTickFormatter={(value) => formatTime(value)}
           renderTooltip={(entries) => (
             <div className={styles.tooltip}>

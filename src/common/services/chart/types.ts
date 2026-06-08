@@ -30,4 +30,5 @@ export type LineChartProps = {
   xTickFormatter?: (value: number) => string;
   yTickFormatter?: (value: number) => string;
   renderTooltip?: (entries: ChartTooltipEntry[]) => ReactNode;
+  showLegend?: boolean;
 };

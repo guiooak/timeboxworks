@@ -1,5 +1,6 @@
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart as RechartsLineChart,
   ResponsiveContainer,
@@ -48,6 +49,7 @@ export function LineChart({
   xTickFormatter,
   yTickFormatter,
   renderTooltip,
+  showLegend,
 }: LineChartProps) {
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -69,6 +71,9 @@ export function LineChart({
           allowDecimals={false}
         />
         {renderTooltip ? <Tooltip content={buildTooltip(renderTooltip)} /> : null}
+        {showLegend ? (
+          <Legend iconType="plainline" wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
+        ) : null}
         {series.map((line) => (
           <Line
             key={line.id}
