@@ -105,7 +105,7 @@ export function GoalsDecisionCollector({
                 name={`decisions-${goal.id}`}
                 value={goal.decisions}
                 onChange={(value) => onChangeGoal(goal.id, { decisions: value })}
-                readOnly={disabled || !!goal.finishedAt}
+                readOnly={disabled}
                 minHeight={70}
               />
             </FormField>
