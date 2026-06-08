@@ -10,28 +10,74 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  transition: width var(--tw-transition);
 }
+.collapsed {
+  width: 64px;
+  padding-left: var(--tw-space-2);
+  padding-right: var(--tw-space-2);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: var(--tw-space-2) var(--tw-space-3);
+  border-radius: var(--tw-radius);
+  color: var(--tw-text-muted);
+  font-size: var(--tw-font-size-md);
+  line-height: 1;
+}
+.toggle:hover {
+  background: var(--tw-white-ice);
+}
+.collapsed .toggle {
+  justify-content: center;
+}
+
 .brand {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
 }
+.brandIcon {
+  font-size: var(--tw-font-size-xl);
+  line-height: 1;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
   gap: var(--tw-space-1);
 }
-.link {
+.link,
+.signOut {
   display: flex;
   align-items: center;
   gap: var(--tw-space-2);
+  width: 100%;
   padding: var(--tw-space-2) var(--tw-space-3);
+  border: none;
+  background: none;
+  cursor: pointer;
   border-radius: var(--tw-radius);
   color: var(--tw-text);
   text-decoration: none;
   font-size: var(--tw-font-size-sm);
   transition: var(--tw-transition);
 }
-.link:hover {
+.signOut {
+  color: var(--tw-primary);
+}
+.link:hover,
+.signOut:hover {
   background: var(--tw-white-ice);
 }
 .active {
@@ -42,6 +88,12 @@
 .active:hover {
   background: var(--tw-primary);
 }
+.icon {
+  width: 1.25rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
 .user {
   margin-top: auto;
   display: flex;
@@ -59,18 +111,26 @@
   color: var(--tw-text-muted);
   word-break: break-word;
 }
-.signOut {
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  color: var(--tw-primary);
-  font-size: var(--tw-font-size-sm);
+
+/* Collapsed rail: icons only. */
+.collapsed .label,
+.collapsed .name {
+  display: none;
+}
+.collapsed .link,
+.collapsed .signOut {
+  justify-content: center;
+  padding-left: var(--tw-space-2);
+  padding-right: var(--tw-space-2);
+}
+.collapsed .user {
+  align-items: center;
 }
 
 /* Collapse to a horizontal top bar on narrow screens. */
 @media (max-width: 640px) {
-  .sidebar {
+  .sidebar,
+  .sidebar.collapsed {
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -79,6 +139,9 @@
     overflow-x: auto;
     border-right: none;
     border-bottom: var(--tw-border);
+  }
+  .toggle {
+    display: none;
   }
   .nav {
     flex-direction: row;
