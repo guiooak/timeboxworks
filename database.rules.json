@@ -3,7 +3,56 @@
     "users": {
       "$uid": {
         ".read": "auth != null && auth.uid === $uid",
-        ".write": "auth != null && auth.uid === $uid"
+        ".write": "auth != null && auth.uid === $uid",
+
+        "currentMeetingId": {
+          ".validate": "newData.isString() && newData.val().length <= 128"
+        },
+
+        "settings": {
+          "decisionsAutomaticBehavior": { ".validate": "newData.isBoolean()" },
+          "$other": { ".validate": false }
+        },
+
+        "meetings": {
+          "$meetingId": {
+            ".validate": "newData.hasChildren()",
+
+            "id": { ".validate": "newData.isString() && newData.val().length <= 128" },
+            "name": { ".validate": "newData.isString() && newData.val().length <= 200" },
+            "description": { ".validate": "newData.isString() && newData.val().length <= 5000" },
+            "expectedStartTime": { ".validate": "newData.isString() && newData.val().length <= 64" },
+            "expectedEndTime": { ".validate": "newData.isString() && newData.val().length <= 64" },
+            "realStartTime": { ".validate": "newData.isString() && newData.val().length <= 64" },
+            "realEndTime": { ".validate": "newData.isString() && newData.val().length <= 64" },
+            "status": { ".validate": "newData.val() === 'draft' || newData.val() === 'active' || newData.val() === 'finished'" },
+            "createdAt": { ".validate": "newData.isString() && newData.val().length <= 64" },
+            "updatedAt": { ".validate": "newData.isString() && newData.val().length <= 64" },
+
+            "goals": {
+              "$goalIndex": {
+                "id": { ".validate": "newData.isString() && newData.val().length <= 128" },
+                "name": { ".validate": "newData.isString() && newData.val().length <= 500" },
+                "weight": { ".validate": "newData.isNumber()" },
+                "finishedAt": { ".validate": "newData.isString() && newData.val().length <= 64" },
+                "decisions": { ".validate": "newData.isString() && newData.val().length <= 5000" },
+                "$other": { ".validate": false }
+              }
+            },
+
+            "sideTopics": {
+              "$topicIndex": {
+                "id": { ".validate": "newData.isString() && newData.val().length <= 128" },
+                "value": { ".validate": "newData.isString() && newData.val().length <= 2000" },
+                "$other": { ".validate": false }
+              }
+            },
+
+            "$other": { ".validate": false }
+          }
+        },
+
+        "$other": { ".validate": false }
       }
     }
   }
