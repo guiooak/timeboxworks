@@ -29,15 +29,6 @@ export function AppSidebar() {
     <aside
       className={collapsed ? `${styles.sidebar} ${styles.collapsed}` : styles.sidebar}
     >
-      <button
-        className={styles.toggle}
-        onClick={() => setCollapsed((value) => !value)}
-        aria-label={collapsed ? 'Expand menu' : 'Collapse menu'}
-        title={collapsed ? 'Expand menu' : 'Collapse menu'}
-      >
-        {collapsed ? '»' : '«'}
-      </button>
-
       <NavLink to={paths.home} className={styles.brand} aria-label="Timebox Works home">
         {collapsed ? (
           <span className={styles.brandIcon} aria-hidden="true">
@@ -92,6 +83,15 @@ export function AppSidebar() {
           <span className={styles.label}>Sign out</span>
         </button>
       </div>
+
+      <button
+        className={styles.toggle}
+        onClick={() => setCollapsed((value) => !value)}
+        aria-label={collapsed ? 'Expand menu' : 'Collapse menu'}
+        title={collapsed ? 'Expand menu' : 'Collapse menu'}
+      >
+        {collapsed ? '»' : '«'}
+      </button>
     </aside>
   );
 }
