@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { Chart, InfoButton, type ChartSeries } from '../../../common/components';
 import { useDialog } from '../../../common/components';
 import { formatTime, toTimestamp } from '../../../common/services/datetime';
@@ -22,6 +22,17 @@ export type BurndownChartProps = {
 export const BurndownChart = forwardRef<HTMLDivElement, BurndownChartProps>(
   function BurndownChart({ startTime, endTime, items, showProjection, height }, ref) {
     const dialog = useDialog();
+
+    // While the projection is live it extends to "now"; re-tick so it keeps
+    // moving even when nothing else changes.
+    const [now, setNow] = useState(() => Date.now());
+    useEffect(() => {
+      if (!showProjection) {
+        return;
+      }
+      const id = setInterval(() => setNow(Date.now()), 10_000);
+      return () => clearInterval(id);
+    }, [showProjection]);
 
     const series = useMemo<ChartSeries[]>(() => {
       const startTs = toTimestamp(startTime);
@@ -48,11 +59,7 @@ export const BurndownChart = forwardRef<HTMLDivElement, BurndownChartProps>(
       ];
 
       if (showProjection) {
-        const projection = buildProjection(
-          items,
-          progress[progress.length - 1],
-          Date.now(),
-        );
+        const projection = buildProjection(items, progress[progress.length - 1], now);
         if (projection) {
           result.push({
             id: 'projection',
@@ -65,7 +72,7 @@ export const BurndownChart = forwardRef<HTMLDivElement, BurndownChartProps>(
         }
       }
       return result;
-    }, [startTime, endTime, items, showProjection]);
+    }, [startTime, endTime, items, showProjection, now]);
 
     const xDomain = useMemo<[number, number]>(
       () => [toTimestamp(startTime), toTimestamp(endTime)],
