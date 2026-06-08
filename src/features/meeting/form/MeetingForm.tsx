@@ -35,18 +35,21 @@ export function MeetingForm() {
   const [submitted, setSubmitted] = useState(false);
   const prefilled = useRef(false);
 
-  // A running meeting jumps to the dashboard; a finished one to its report.
+  // A finished meeting is over: clear the pointer so the form starts fresh.
+  // A still-running meeting takes over the live view instead.
   useEffect(() => {
     if (currentMeeting?.realEndTime) {
-      navigation.replace(paths.report);
+      void discardCurrent();
     } else if (currentMeeting?.realStartTime) {
       navigation.replace(paths.liveMeeting);
     }
-  }, [currentMeeting, navigation]);
+  }, [currentMeeting, navigation, discardCurrent]);
 
   // Rehydrate the form from a saved draft once it loads.
   useEffect(() => {
-    if (prefilled.current || !currentMeeting) {
+    // Only an unstarted draft should rehydrate the form (not a finished meeting
+    // that's about to be cleared).
+    if (prefilled.current || currentMeeting?.status !== 'draft') {
       return;
     }
     prefilled.current = true;
