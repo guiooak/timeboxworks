@@ -31,8 +31,10 @@
   font-size: var(--tw-font-size-xs);
 }
 .textarea {
-  resize: vertical;
+  resize: none;
+  overflow: hidden;
   min-height: 80px;
+  transition: height var(--tw-transition);
 }
 
 .inputsList {

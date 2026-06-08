@@ -2,6 +2,8 @@ export { Form } from './Form';
 export { FormField } from './FormField';
 export { FormInput } from './FormInput';
 export { FormTextarea } from './FormTextarea';
+export { TextArea } from './TextArea';
+export type { TextAreaProps } from './TextArea';
 export { FormDatetimePicker } from './FormDatetimePicker';
 export { FormInputsList, newInputsListItem } from './FormInputsList';
 export { FormSubmitButton } from './FormSubmitButton';

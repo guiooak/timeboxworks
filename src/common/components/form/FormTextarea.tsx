@@ -1,4 +1,4 @@
-import { cx } from '../cx';
+import { TextArea } from './TextArea';
 import { useFormField, type FieldValidator } from './useFormField';
 import styles from './form.module.css';
 
@@ -17,7 +17,7 @@ export type FormTextareaProps = {
 
 export function FormTextarea({
   placeholder,
-  minHeight = 80,
+  minHeight,
   readOnly,
   id,
   ...fieldOptions
@@ -25,16 +25,16 @@ export function FormTextarea({
   const { value, setValue, error, onBlur } = useFormField(fieldOptions);
   return (
     <>
-      <textarea
+      <TextArea
         id={id}
         name={fieldOptions.name}
-        className={cx(styles.control, styles.textarea, error && styles.invalid)}
-        style={{ minHeight }}
+        value={value}
+        onChange={setValue}
+        onBlur={onBlur}
         placeholder={placeholder}
         readOnly={readOnly}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        onBlur={onBlur}
+        minHeight={minHeight}
+        invalid={!!error}
       />
       {error && <span className={styles.error}>{error}</span>}
     </>
