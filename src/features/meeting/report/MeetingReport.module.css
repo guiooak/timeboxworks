@@ -45,26 +45,20 @@
 }
 .timeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--tw-gutter);
 }
-.timeCard {
-  text-align: center;
-}
-.timeCardLabel {
+.timeCardValue {
+  font-size: var(--tw-font-size-xl);
   font-weight: var(--tw-font-weight-bold);
-  text-transform: uppercase;
-  font-size: var(--tw-font-size-sm);
-  letter-spacing: 0.04em;
 }
-.timeCardTimes {
+.timeCardFooter {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin: var(--tw-space-2) 0;
 }
-.timeCardFeedback {
-  font-size: var(--tw-font-size-sm);
+.planned {
+  opacity: 0.85;
 }
 .preview {
   display: flex;
