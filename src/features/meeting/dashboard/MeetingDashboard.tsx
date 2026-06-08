@@ -12,8 +12,10 @@ import {
   TimeCountdown,
   useDialog,
 } from '../../../common/components';
+import { toTimestamp } from '../../../common/services/datetime';
 import { paths, useNavigation } from '../../../common/services/router';
 import { BurndownChart, GoalsDecisionCollector } from '../components';
+import { tendencyCrossoverTs } from '../domain/burndown';
 import { useMeetingStore } from '../store';
 import { DashboardSideTopics } from './DashboardSideTopics';
 import styles from './MeetingDashboard.module.css';
@@ -110,6 +112,13 @@ export function MeetingDashboard() {
     finishedAt: goal.finishedAt || null,
   }));
 
+  // Yellow countdown once progress is trending above the tendency line.
+  const warnAfter = tendencyCrossoverTs(
+    burndownItems,
+    toTimestamp(meeting.expectedStartTime),
+    toTimestamp(meeting.expectedEndTime),
+  );
+
   return (
     <Container fullWidth className={styles.dashboard}>
       <header className={styles.head}>
@@ -126,6 +135,7 @@ export function MeetingDashboard() {
               timeFrom={meeting.expectedStartTime}
               timeTarget={meeting.expectedEndTime}
               disabled={!active}
+              warnAfter={warnAfter}
             />
           </Box>
           <Box className={styles.block}>

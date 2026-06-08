@@ -24,6 +24,24 @@ export function buildTendency(
   ];
 }
 
+/** Timestamp after which the remaining work sits above the tendency line — i.e.
+ * the event is trending late. Returns null when that never happens (nothing left
+ * to do, no work, or an invalid window). */
+export function tendencyCrossoverTs(
+  items: BurndownItem[],
+  startTs: number,
+  endTs: number,
+): number | null {
+  const total = getTotalWeight(items);
+  const remaining = items
+    .filter((item) => !item.finishedAt)
+    .reduce((acc, item) => acc + (Number(item.weight) || 1), 0);
+  if (total <= 0 || remaining <= 0 || endTs <= startTs) {
+    return null;
+  }
+  return endTs - (remaining / total) * (endTs - startTs);
+}
+
 /** Step-down line: one point per completed goal at its finish time. */
 export function buildProgress(
   items: BurndownItem[],

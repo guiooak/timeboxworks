@@ -1,5 +1,36 @@
 .display {
   text-align: center;
+  transition: background var(--tw-transition);
+}
+
+/* Pastel backgrounds — lighter tints of each theme colour, with dark text.
+ * Compound selectors keep them above Card's solid theme classes. */
+.display.primary,
+.display.secondary,
+.display.success,
+.display.info,
+.display.warning,
+.display.danger {
+  color: var(--tw-text);
+  border-color: transparent;
+}
+.display.primary {
+  background: color-mix(in srgb, var(--tw-primary) 18%, white);
+}
+.display.secondary {
+  background: color-mix(in srgb, var(--tw-secondary) 20%, white);
+}
+.display.success {
+  background: color-mix(in srgb, var(--tw-success) 20%, white);
+}
+.display.info {
+  background: color-mix(in srgb, var(--tw-info) 22%, white);
+}
+.display.warning {
+  background: color-mix(in srgb, var(--tw-warning) 38%, white);
+}
+.display.danger {
+  background: color-mix(in srgb, var(--tw-danger) 30%, white);
 }
 .header {
   text-transform: uppercase;

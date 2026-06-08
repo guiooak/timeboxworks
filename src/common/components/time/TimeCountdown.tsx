@@ -16,6 +16,8 @@ export type TimeCountdownProps = {
   timeFrom?: DateInput;
   disabled?: boolean;
   size?: TimeFormatSize;
+  /** Once "now" passes this timestamp, warn (yellow) that the event is trending late. */
+  warnAfter?: number | null;
 };
 
 export function TimeCountdown({
@@ -23,6 +25,7 @@ export function TimeCountdown({
   timeFrom,
   disabled,
   size = 'xl',
+  warnAfter,
 }: TimeCountdownProps) {
   const [nowTs, setNowTs] = useState(() => Date.now());
 
@@ -36,8 +39,15 @@ export function TimeCountdown({
 
   const remaining = diffMs(timeTarget, nowTs);
   const isNegative = remaining < 0;
+  const behind = !disabled && warnAfter != null && nowTs >= warnAfter;
 
-  const theme: Theme = disabled ? 'secondary' : isNegative ? 'danger' : 'primary';
+  const theme: Theme = disabled
+    ? 'secondary'
+    : isNegative
+      ? 'danger'
+      : behind
+        ? 'warning'
+        : 'primary';
 
   const endLabel =
     !timeFrom || isSameDay(timeFrom, timeTarget)
