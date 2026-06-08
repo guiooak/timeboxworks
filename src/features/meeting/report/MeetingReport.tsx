@@ -12,7 +12,7 @@ import {
 } from '../../../common/components';
 import { svgElementToPngDataUrl } from '../../../common/services/chart';
 import { formatLong, formatTime, isSameDay } from '../../../common/services/datetime';
-import { useNavigation } from '../../../common/services/router';
+import { paths, useNavigation } from '../../../common/services/router';
 import { BurndownChart } from '../components';
 import { useMeetingStore } from '../store';
 import { TemplatePreviewModal } from './TemplatePreviewModal';
@@ -40,10 +40,10 @@ export function MeetingReport() {
     void (async () => {
       if (!meeting?.name) {
         await dialog.alert('There is no event to report yet.');
-        navigation.replace('/meeting/form');
+        navigation.replace(paths.newMeeting);
       } else if (!meeting.realEndTime) {
         await dialog.alert('Finish your event to see its report.');
-        navigation.replace('/meeting/dashboard');
+        navigation.replace(paths.liveMeeting);
       }
     })();
   }, [loading, meeting, dialog, navigation]);
@@ -73,7 +73,7 @@ export function MeetingReport() {
 
   const onBackToDashboard = async () => {
     await backToDashboard();
-    navigation.go('/meeting/dashboard');
+    navigation.go(paths.liveMeeting);
   };
 
   const onStartNew = async () => {
@@ -84,7 +84,7 @@ export function MeetingReport() {
     });
     if (confirmed) {
       await discardCurrent();
-      navigation.go('/meeting/form');
+      navigation.go(paths.newMeeting);
     }
   };
 

@@ -1,14 +1,15 @@
 import { useEffect, type ReactNode } from 'react';
 import { Loader } from '../common/components';
-import { Navigate, Route, RouteGuard, Routes } from '../common/services/router';
+import { Navigate, Route, RouteGuard, Routes, paths } from '../common/services/router';
 import { Login, useAuthStore } from '../features/auth';
 import { useMeetingStore } from '../features/meeting/store';
+import { Home } from '../features/meeting/home/Home';
 import { MeetingForm } from '../features/meeting/form/MeetingForm';
 import { MeetingDashboard } from '../features/meeting/dashboard/MeetingDashboard';
 import { MeetingReport } from '../features/meeting/report/MeetingReport';
 import { MeetingsHistory } from '../features/meeting/history/MeetingsHistory';
 import { AppFooter } from './AppFooter';
-import { AppHeader } from './AppHeader';
+import { AppSidebar } from './AppSidebar';
 import styles from './App.module.css';
 
 export function AppShell() {
@@ -33,28 +34,31 @@ export function AppShell() {
 
   const authed = status === 'authenticated';
   const protect = (element: ReactNode) => (
-    <RouteGuard when={authed} redirectTo="/login">
+    <RouteGuard when={authed} redirectTo={paths.login}>
       {element}
     </RouteGuard>
   );
 
   return (
     <div className={styles.layout}>
-      <AppHeader />
-      <main className={styles.main}>
-        <Routes>
-          <Route
-            path="/login"
-            element={authed ? <Navigate to="/meeting/form" replace /> : <Login />}
-          />
-          <Route path="/meeting/form" element={protect(<MeetingForm />)} />
-          <Route path="/meeting/dashboard" element={protect(<MeetingDashboard />)} />
-          <Route path="/meeting/report" element={protect(<MeetingReport />)} />
-          <Route path="/meetings" element={protect(<MeetingsHistory />)} />
-          <Route path="*" element={<Navigate to="/meeting/form" replace />} />
-        </Routes>
-      </main>
-      <AppFooter />
+      {authed && <AppSidebar />}
+      <div className={styles.content}>
+        <main className={styles.main}>
+          <Routes>
+            <Route
+              path={paths.login}
+              element={authed ? <Navigate to={paths.home} replace /> : <Login />}
+            />
+            <Route path={paths.home} element={protect(<Home />)} />
+            <Route path={paths.newMeeting} element={protect(<MeetingForm />)} />
+            <Route path={paths.liveMeeting} element={protect(<MeetingDashboard />)} />
+            <Route path={paths.report} element={protect(<MeetingReport />)} />
+            <Route path={paths.meetings} element={protect(<MeetingsHistory />)} />
+            <Route path="*" element={<Navigate to={paths.home} replace />} />
+          </Routes>
+        </main>
+        {authed && <AppFooter />}
+      </div>
     </div>
   );
 }

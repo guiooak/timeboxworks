@@ -1,0 +1,76 @@
+.home {
+  padding-top: var(--tw-space-5);
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tw-space-3);
+  margin-bottom: var(--tw-space-4);
+}
+.resume {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tw-space-3);
+  flex-wrap: wrap;
+  border-left: 3px solid var(--tw-success);
+  margin-bottom: var(--tw-space-5);
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--tw-space-3);
+  margin-bottom: var(--tw-space-6);
+}
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-1);
+}
+.metricValue {
+  font-size: var(--tw-font-size-xl);
+  font-weight: var(--tw-font-weight-bold);
+  color: var(--tw-text);
+}
+.metricLabel {
+  font-size: var(--tw-font-size-sm);
+  font-weight: var(--tw-font-weight-medium);
+}
+.metricNote {
+  font-size: var(--tw-font-size-xs);
+  color: var(--tw-text-muted);
+}
+.recentSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-3);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tw-space-3);
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tw-space-3);
+  flex-wrap: wrap;
+}
+.meta {
+  color: var(--tw-text-muted);
+  font-size: var(--tw-font-size-sm);
+}
+.actions {
+  display: flex;
+  gap: var(--tw-space-2);
+}
+.blankSlate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tw-space-3);
+  text-align: center;
+  padding: var(--tw-space-7) 0;
+}

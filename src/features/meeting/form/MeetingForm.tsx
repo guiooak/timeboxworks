@@ -17,7 +17,7 @@ import {
   type InputsListItem,
 } from '../../../common/components';
 import { addHours, nowISO, toISO, toTimestamp } from '../../../common/services/datetime';
-import { useNavigation } from '../../../common/services/router';
+import { paths, useNavigation } from '../../../common/services/router';
 import { useMeetingStore } from '../store';
 import styles from './MeetingForm.module.css';
 
@@ -38,9 +38,9 @@ export function MeetingForm() {
   // A running meeting jumps to the dashboard; a finished one to its report.
   useEffect(() => {
     if (currentMeeting?.realEndTime) {
-      navigation.replace('/meeting/report');
+      navigation.replace(paths.report);
     } else if (currentMeeting?.realStartTime) {
-      navigation.replace('/meeting/dashboard');
+      navigation.replace(paths.liveMeeting);
     }
   }, [currentMeeting, navigation]);
 
@@ -95,7 +95,7 @@ export function MeetingForm() {
         weight: Number(goal.weight) || 1,
       })),
     });
-    navigation.go('/meeting/dashboard');
+    navigation.go(paths.liveMeeting);
   };
 
   const onReset = async () => {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Box, Button, Container, Heading, Page } from '../../../common/components';
 import { formatLong, toTimestamp } from '../../../common/services/datetime';
-import { useNavigation } from '../../../common/services/router';
+import { paths, useNavigation } from '../../../common/services/router';
 import { useMeetingStore } from '../store';
 import styles from './MeetingsHistory.module.css';
 
@@ -21,13 +21,13 @@ export function MeetingsHistory() {
 
   const onReopen = async (id: string) => {
     await reopen(id);
-    navigation.go('/meeting/report');
+    navigation.go(paths.report);
   };
 
   const onClone = async (id: string) => {
     const newId = await clone(id);
     if (newId) {
-      navigation.go('/meeting/form');
+      navigation.go(paths.newMeeting);
     }
   };
 

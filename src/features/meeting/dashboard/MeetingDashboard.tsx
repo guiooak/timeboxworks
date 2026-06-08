@@ -12,7 +12,7 @@ import {
   TimeCountdown,
   useDialog,
 } from '../../../common/components';
-import { useNavigation } from '../../../common/services/router';
+import { paths, useNavigation } from '../../../common/services/router';
 import { BurndownChart, GoalsDecisionCollector } from '../components';
 import { useMeetingStore } from '../store';
 import { DashboardSideTopics } from './DashboardSideTopics';
@@ -43,10 +43,10 @@ export function MeetingDashboard() {
     void (async () => {
       if (!meeting?.name) {
         await dialog.alert('Set up your event before opening the dashboard.');
-        navigation.replace('/meeting/form');
+        navigation.replace(paths.newMeeting);
       } else if (meeting.realEndTime) {
         await dialog.alert('This event is already completed.');
-        navigation.replace('/meeting/report');
+        navigation.replace(paths.report);
       } else if (!meeting.realStartTime) {
         const ready = await dialog.confirm({
           text: 'Are you ready to start?',
@@ -58,7 +58,7 @@ export function MeetingDashboard() {
         if (ready) {
           await startMeeting();
         } else {
-          navigation.replace('/meeting/form');
+          navigation.replace(paths.newMeeting);
         }
       }
     })();
@@ -81,13 +81,13 @@ export function MeetingDashboard() {
     });
     if (confirmed) {
       await cancelMeeting();
-      navigation.go('/meeting/form');
+      navigation.go(paths.newMeeting);
     }
   };
 
   const onFinish = async () => {
     await finishMeeting();
-    navigation.go('/meeting/report');
+    navigation.go(paths.report);
   };
 
   const onAllCompleted = async () => {
@@ -162,7 +162,7 @@ export function MeetingDashboard() {
           <Button
             theme="secondary"
             outline
-            onClick={() => navigation.go('/meeting/form')}
+            onClick={() => navigation.go(paths.newMeeting)}
           >
             Go back
           </Button>
