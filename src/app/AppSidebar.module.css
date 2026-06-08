@@ -77,8 +77,13 @@
   color: var(--tw-primary);
 }
 .link:hover,
-.signOut:hover {
+.signOut:hover,
+.brand:hover {
   background: var(--tw-white-ice);
+  text-decoration: none;
+}
+.brand:hover {
+  background: none;
 }
 .active {
   background: var(--tw-primary);
