@@ -6,6 +6,7 @@
   cursor: pointer;
   color: var(--tw-text-muted);
   padding: 0 var(--tw-space-1);
+  transition: color var(--tw-transition);
 }
 .close:hover {
   color: var(--tw-text);

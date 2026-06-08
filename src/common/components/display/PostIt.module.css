@@ -1,25 +1,34 @@
 .postIt {
+  position: relative;
   background: #fff8c5;
   border-radius: var(--tw-radius-sm);
   padding: var(--tw-space-2);
   box-shadow: var(--tw-shadow-sm);
 }
-.top {
+.close {
+  position: absolute;
+  top: var(--tw-space-1);
+  right: var(--tw-space-1);
+}
+.row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--tw-space-2);
 }
 .prefix {
   font-size: var(--tw-font-size-sm);
   color: var(--tw-text-muted);
-  font-weight: var(--tw-font-weight-bold);
 }
 .textarea {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
-  resize: vertical;
+  resize: none;
+  overflow: hidden;
   font-family: inherit;
   font-size: var(--tw-font-size-sm);
   outline: none;
+  padding-right: var(--tw-space-5);
+  transition: height var(--tw-transition);
 }

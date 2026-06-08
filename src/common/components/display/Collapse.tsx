@@ -32,7 +32,7 @@ export function Collapse({
           onClick={() => onToggleOpen(!open)}
         >
           <span className={styles.caret} aria-hidden="true">
-            {open ? '▾' : '▸'}
+            ▸
           </span>
           <span className={styles.title}>{title}</span>
         </button>
@@ -47,7 +47,11 @@ export function Collapse({
           </span>
         )}
       </div>
-      {open && <div className={styles.body}>{children}</div>}
+      <div className={styles.bodyWrap}>
+        <div className={styles.bodyInner}>
+          <div className={styles.body}>{children}</div>
+        </div>
+      </div>
     </div>
   );
 }

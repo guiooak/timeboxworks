@@ -24,9 +24,28 @@
 }
 .caret {
   color: var(--tw-text-muted);
+  display: inline-block;
+  transition: transform var(--tw-transition);
+}
+.open .caret {
+  transform: rotate(90deg);
 }
 .title {
   font-weight: var(--tw-font-weight-medium);
+}
+
+/* Animate open/close to the content's natural height via the 0fr/1fr grid. */
+.bodyWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--tw-transition);
+}
+.open .bodyWrap {
+  grid-template-rows: 1fr;
+}
+.bodyInner {
+  overflow: hidden;
+  min-height: 0;
 }
 .body {
   padding: 0 var(--tw-space-3) var(--tw-space-3);

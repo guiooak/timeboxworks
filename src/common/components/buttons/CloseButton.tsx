@@ -1,10 +1,20 @@
+import { cx } from '../cx';
 import styles from './CloseButton.module.css';
 
-export type CloseButtonProps = { onClick?: () => void; label?: string };
+export type CloseButtonProps = {
+  onClick?: () => void;
+  label?: string;
+  className?: string;
+};
 
-export function CloseButton({ onClick, label = 'Close' }: CloseButtonProps) {
+export function CloseButton({ onClick, label = 'Close', className }: CloseButtonProps) {
   return (
-    <button type="button" aria-label={label} className={styles.close} onClick={onClick}>
+    <button
+      type="button"
+      aria-label={label}
+      className={cx(styles.close, className)}
+      onClick={onClick}
+    >
       &times;
     </button>
   );

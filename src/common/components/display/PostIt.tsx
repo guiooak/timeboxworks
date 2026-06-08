@@ -1,5 +1,6 @@
-import type { Ref } from 'react';
+import { useRef } from 'react';
 import { CloseButton } from '../buttons';
+import { useAutoGrowTextarea } from '../useAutoGrowTextarea';
 import styles from './PostIt.module.css';
 
 export type PostItProps = {
@@ -8,31 +9,26 @@ export type PostItProps = {
   onChange: (value: string) => void;
   onBlur?: () => void;
   onDelete?: () => void;
-  textareaRef?: Ref<HTMLTextAreaElement>;
 };
 
-export function PostIt({
-  value,
-  prefix,
-  onChange,
-  onBlur,
-  onDelete,
-  textareaRef,
-}: PostItProps) {
+export function PostIt({ value, prefix, onChange, onBlur, onDelete }: PostItProps) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useAutoGrowTextarea(ref, value);
+
   return (
     <div className={styles.postIt}>
-      <div className={styles.top}>
+      <CloseButton className={styles.close} onClick={onDelete} label="Delete topic" />
+      <div className={styles.row}>
         {prefix && <span className={styles.prefix}>{prefix}</span>}
-        <CloseButton onClick={onDelete} label="Delete topic" />
+        <textarea
+          ref={ref}
+          className={styles.textarea}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          onBlur={onBlur}
+          rows={1}
+        />
       </div>
-      <textarea
-        ref={textareaRef}
-        className={styles.textarea}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        onBlur={onBlur}
-        rows={2}
-      />
     </div>
   );
 }
